@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { requirePending } from "@/lib/auth/session";
 import { ensureSecret } from "@/lib/auth/mfa";
@@ -5,7 +6,7 @@ import { qrDataUrl } from "@/lib/auth/totp";
 import { CodeForm } from "@/components/admin/CodeForm";
 import { confirmMfaSetup } from "../verify/actions";
 
-export const metadata = { title: "Set up authenticator" };
+export const metadata:Metadata = { title: "Set up authenticator" };
 
 export default async function MfaSetupPage() {
   const session = await requirePending();

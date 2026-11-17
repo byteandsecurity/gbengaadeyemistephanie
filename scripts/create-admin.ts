@@ -6,8 +6,8 @@ import { createInterface } from "node:readline";
 import { Writable } from "node:stream";
 import bcrypt from "bcryptjs";
 import { eq } from "drizzle-orm";
-import { createDb, createPool } from "../db/client";
-import { adminUsers } from "../db/schema";
+import { createDb, createPool } from "@/db/client";
+import { adminUsers } from "@/db/schema";
 
 // One readline interface for the whole script, with a small queue so lines that
 // arrive early (a paste, or piped input) are not lost between questions.

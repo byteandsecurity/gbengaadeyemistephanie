@@ -3,12 +3,12 @@
 //   npm run db:seed
 
 import "./env";
-import { createDb, createPool } from "../db/client";
+import { createDb, createPool } from "@/db/client";
 import * as t from "../db/schema";
-import { credentials, profile, recognition } from "../content/profile";
-import { experience, securityExperience } from "../content/experience";
-import { projects, research } from "../content/projects";
-import { labs, stages } from "../content/security";
+import { credentials, profile, recognition } from "@/content/profile";
+import { experience, securityExperience } from "@/content/experience";
+import { projects, research } from "@/content/projects";
+import { labs, stages } from "@/content/security";
 
 async function main() {
   const url = process.env.DATABASE_URL;

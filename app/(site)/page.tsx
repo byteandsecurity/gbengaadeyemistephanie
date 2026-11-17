@@ -15,7 +15,7 @@ function PathPanel({
   return (
     <Link
       href={href}
-      className={`group flex flex-col justify-between gap-12 p-7 transition-[flex-grow] duration-500 sm:p-10 md:min-h-[30rem] md:flex-1 md:hover:grow-[1.35] ${className}`}
+      className={`group flex flex-col justify-between gap-12 p-7 transition-[flex-grow] duration-500 sm:p-10 md:min-h-120 md:flex-1 md:hover:grow-[1.35] ${className}`}
     >
       <div>
         <h2 className="text-4xl font-bold sm:text-5xl">{panel.title}</h2>

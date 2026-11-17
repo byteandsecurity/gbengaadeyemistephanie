@@ -2,7 +2,7 @@
 //   npm run db:migrate
 import "./env";
 import { migrate } from "drizzle-orm/node-postgres/migrator";
-import { createDb, createPool } from "../db/client";
+import { createDb, createPool } from "@/db/client";
 
 async function main() {
   const url = process.env.DATABASE_URL;

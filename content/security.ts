@@ -32,7 +32,7 @@ export const stages: Stage[] = [
     title: "Incident response and DFIR",
     score: "82/100",
     detail:
-      "Wrote analyst playbooks, rebuilt attack timelines from raw system logs, planned containment without business downtime and authored incident post-mortems.",
+      "Wrote analyst playbooks, rebuilt attack timelines from raw system logs, planned containment without business downtime and authored incident post-mortem.",
   },
   {
     id: "ubi-4",

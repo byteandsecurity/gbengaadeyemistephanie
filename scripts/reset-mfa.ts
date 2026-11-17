@@ -2,8 +2,8 @@
 // The next sign-in goes through authenticator setup again.
 //   npm run admin:reset-mfa
 import "./env";
-import { createDb, createPool } from "../db/client";
-import { adminSessions, adminUsers } from "../db/schema";
+import { createDb, createPool } from "@/db/client";
+import { adminSessions, adminUsers } from "@/db/schema";
 
 async function main() {
   const url = process.env.DATABASE_URL;

@@ -1,8 +1,9 @@
+import { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { getSession } from "@/lib/auth/session";
 import { LoginForm } from "@/components/admin/LoginForm";
 
-export const metadata = { title: "Sign in" };
+export const metadata:Metadata = { title: "Sign in" };
 
 export default async function LoginPage() {
   const session = await getSession();

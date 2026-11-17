@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useActionState } from "react";
+import React, { useActionState } from "react";
 import type { FormState } from "@/app/admin/actions";
 import type { Field, FormValues } from "@/lib/admin/fields";
 import { buttonClass, inputClass, Notice, secondaryButtonClass } from "./ui";

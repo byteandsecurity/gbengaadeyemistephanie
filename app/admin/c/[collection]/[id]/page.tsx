@@ -10,7 +10,11 @@ import { EntryForm } from "@/components/admin/EntryForm";
 import { PageTitle } from "@/components/admin/ui";
 import { deleteEntry, saveEntry } from "../../../actions";
 
-export default async function EditEntryPage({ params }: PageProps<"/admin/c/[collection]/[id]">) {
+interface EditEntryPageProps {
+  params: Promise<{ collection: string; id: string }>;
+}
+
+export default async function EditEntryPage({ params }: EditEntryPageProps) {
   await requireAdmin();
   const { collection: slug, id: rawId } = await params;
   const id = decodeURIComponent(rawId);
@@ -25,27 +29,27 @@ export default async function EditEntryPage({ params }: PageProps<"/admin/c/[col
   for (const f of collection.fields) initial[f.name] = toFormValue(f, row[f.name]);
 
   return (
-    <div className="max-w-3xl space-y-8">
-      <PageTitle title={`Edit ${collection.singular}`} />
-      <EntryForm
-        fields={collection.fields}
-        initial={initial}
-        initialPublished={Boolean(row.published)}
-        action={saveEntry.bind(null, slug, id)}
-        cancelHref={`/admin/c/${slug}`}
-        submitLabel="Save and update site"
-      />
-      <section aria-labelledby="danger-title" className="border-t border-line pt-8">
-        <h2 id="danger-title" className="text-lg font-bold">
-          Delete
-        </h2>
-        <p className="mb-4 mt-1 text-[0.95rem] text-muted">
-          This removes it for good. To hide it without deleting, untick Published above instead.
-        </p>
-        <form action={deleteEntry.bind(null, slug, id)}>
-          <ConfirmButton message={`Delete this ${collection.singular}? This cannot be undone.`}>Delete {collection.singular}</ConfirmButton>
-        </form>
-      </section>
-    </div>
+      <div className="max-w-3xl space-y-8">
+        <PageTitle title={`Edit ${collection.singular}`} />
+        <EntryForm
+            fields={collection.fields}
+            initial={initial}
+            initialPublished={Boolean(row.published)}
+            action={saveEntry.bind(null, slug, id)}
+            cancelHref={`/admin/c/${slug}`}
+            submitLabel="Save and update site"
+        />
+        <section aria-labelledby="danger-title" className="border-t border-line pt-8">
+          <h2 id="danger-title" className="text-lg font-bold">
+            Delete
+          </h2>
+          <p className="mb-4 mt-1 text-[0.95rem] text-muted">
+            This removes it for good. To hide it without deleting, untick Published above instead.
+          </p>
+          <form action={deleteEntry.bind(null, slug, id)}>
+            <ConfirmButton message={`Delete this ${collection.singular}? This cannot be undone.`}>Delete {collection.singular}</ConfirmButton>
+          </form>
+        </section>
+      </div>
   );
 }

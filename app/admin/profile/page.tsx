@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { requireAdmin } from "@/lib/auth/session";
 import { profileFields } from "@/lib/admin/collections";
 import { loadProfileValues } from "@/lib/admin/load";
@@ -5,7 +6,7 @@ import { EntryForm } from "@/components/admin/EntryForm";
 import { PageTitle } from "@/components/admin/ui";
 import { saveProfile } from "../actions";
 
-export const metadata = { title: "Profile" };
+export const metadata:Metadata = { title: "Profile" };
 
 export default async function ProfilePage() {
   await requireAdmin();
