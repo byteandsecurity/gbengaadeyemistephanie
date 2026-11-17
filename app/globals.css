@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #f5f7fa;
+  --color-ink: #0f1b2d;
+  --color-muted: #4a5668;
+  --color-line: #d5dbe3;
+
+  /* Software side */
+  --color-cobalt: #2447f5;
+  --color-cobalt-deep: #1a34b8;
+  --color-cobalt-soft: #e4e9ff;
+
+  /* Security and governance side */
+  --color-amber: #f0a900;
+  --color-amber-deep: #7a4d00;
+  --color-amber-soft: #fdf0c6;
+
+  /* Admin feedback */
+  --color-danger: #a3261c;
+  --color-danger-soft: #fbe9e7;
+  --color-ok: #14663a;
+  --color-ok-soft: #e3f4ea;
+
+  --font-display: "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Source Serif 4 Variable", ui-serif, Georgia, serif;
+}
+
+html {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+}
+
+/* Body links read as links without relying on colour alone */
+.prose-link,
+main p a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-cobalt);
+  outline-offset: 3px;
+}
+
+.on-cobalt :focus-visible {
+  outline-color: #ffffff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
