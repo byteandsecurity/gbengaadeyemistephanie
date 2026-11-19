@@ -16,7 +16,20 @@ self.addEventListener("install", (event) => {
     event.waitUntil(
         caches
             .open(CACHE_NAME)
-            .then((cache) => cache.addAll(PRECACHE_URLS))
+            .then(async (cache) => {
+                await Promise.all(
+                    PRECACHE_URLS.map(async (url) => {
+                        try {
+                            const response = await fetch(url, { cache: "reload" });
+                            if (response.ok) {
+                                await cache.put(url, response);
+                            }
+                        } catch {
+                            // Skip individual asset errors so valid routes still cache
+                        }
+                    }),
+                );
+            })
             .then(() => self.skipWaiting()),
     );
 });
