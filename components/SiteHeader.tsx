@@ -9,6 +9,7 @@ import { OfflineBadge } from "./OfflineBadge";
 
 export function SiteHeader({ name }: { name: string }) {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
@@ -28,16 +29,17 @@ export function SiteHeader({ name }: { name: string }) {
                   : "border-line bg-paper text-ink shadow-sm"
           }`}
       >
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3.5 sm:px-8 sm:py-4">
+        <div className="site-container flex items-center justify-between gap-2 px-4 py-3.5 sm:px-8 sm:py-4">
           <Link
               href="/"
+              onClick={() => setIsMenuOpen(false)}
               className="group inline-flex min-w-0 items-center gap-2 font-display text-sm font-bold tracking-tight text-ink transition-colors sm:gap-2.5 sm:text-base md:text-lg"
           >
             <BrandIcon className="h-7 w-7 shrink-0 transition-transform duration-300 group-hover:scale-105 sm:h-8 sm:w-8" />
-            <span className="truncate text-ink">{name}</span>
+            <span className="max-w-[9rem] truncate text-ink sm:max-w-none">{name}</span>
           </Link>
 
-          <nav aria-label="Main" className="flex shrink-0 items-center gap-2.5 sm:gap-5">
+          <nav aria-label="Main" className="flex shrink-0 items-center gap-2 sm:gap-4">
             {/* Desktop Navigation */}
             <div className="hidden items-center gap-4 md:flex">
               <NavLink href="/software" isScrolled={isScrolled}>Software</NavLink>
@@ -46,30 +48,17 @@ export function SiteHeader({ name }: { name: string }) {
               <NavLink href="/about" isScrolled={isScrolled}>About</NavLink>
             </div>
 
-            {/* Mobile / Tablet Short Nav */}
-            <div className="flex items-center gap-1 md:hidden">
-              <Link
-                  href="/works"
-                  className="rounded-lg px-2 py-1 font-display text-xs font-semibold text-ink/80 transition-colors hover:text-ink"
-              >
-                Works
-              </Link>
-              <Link
-                  href="/about"
-                  className="rounded-lg px-2 py-1 font-display text-xs font-semibold text-ink/80 transition-colors hover:text-ink"
-              >
-                About
-              </Link>
+            {/* Desktop OfflineBadge */}
+            <div className="hidden md:inline-flex">
+              <OfflineBadge />
             </div>
-
-            <OfflineBadge />
 
             {/* Theme Toggle Button */}
             <button
                 type="button"
                 aria-label="Toggle light/dark theme"
                 onClick={toggleTheme}
-                className="flex h-9 w-9 items-center justify-center rounded-xl border border-line bg-surface text-ink transition-all hover:scale-105 hover:border-violet"
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-line bg-surface text-ink transition-all hover:scale-105 hover:border-violet"
             >
               {theme === "dark" ? (
                   <svg className="h-4 w-4 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -83,16 +72,83 @@ export function SiteHeader({ name }: { name: string }) {
               )}
             </button>
 
-            {/* Contact Button */}
+            {/* Desktop Contact Button */}
             <a
                 href="#contact"
-                className="inline-flex items-center gap-1.5 rounded-xl border border-line bg-surface px-3 py-1.5 font-display text-xs font-semibold text-ink transition-all hover:border-emerald sm:text-sm"
+                className="hidden items-center gap-1.5 rounded-xl border border-line bg-surface px-3 py-1.5 font-display text-xs font-semibold text-ink transition-all hover:border-emerald md:inline-flex sm:text-sm"
             >
               <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald" />
               <span>Contact</span>
             </a>
+
+            {/* Mobile Menu Toggle */}
+            <button
+                type="button"
+                aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+                aria-expanded={isMenuOpen}
+                onClick={() => setIsMenuOpen((prev) => !prev)}
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-line bg-surface text-ink transition-colors hover:border-emerald md:hidden"
+            >
+              {isMenuOpen ? (
+                  <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M18 6 6 18M6 6l12 12" />
+                  </svg>
+              ) : (
+                  <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M4 7h16M4 12h16M4 17h16" />
+                  </svg>
+              )}
+            </button>
           </nav>
         </div>
+
+        {/* Mobile Floating Dropdown Menu */}
+        {isMenuOpen && (
+            <div className="absolute inset-x-0 top-full z-50 border-b border-line bg-paper px-4 py-4 shadow-xl shadow-black/15 md:hidden">
+              <div className="site-container flex flex-col gap-2 font-display text-sm font-semibold">
+                <Link
+                    href="/software"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="rounded-xl px-3 py-2 text-ink/85 transition-colors hover:bg-surface hover:text-ink"
+                >
+                  Software
+                </Link>
+                <Link
+                    href="/cybersecurity"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="rounded-xl px-3 py-2 text-ink/85 transition-colors hover:bg-surface hover:text-ink"
+                >
+                  Cybersecurity
+                </Link>
+                <Link
+                    href="/works"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="rounded-xl px-3 py-2 text-ink/85 transition-colors hover:bg-surface hover:text-ink"
+                >
+                  Works
+                </Link>
+                <Link
+                    href="/about"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="rounded-xl px-3 py-2 text-ink/85 transition-colors hover:bg-surface hover:text-ink"
+                >
+                  About
+                </Link>
+
+                <div className="mt-2 flex items-center justify-between border-t border-line pt-3">
+                  <OfflineBadge />
+                  <a
+                      href="#contact"
+                      onClick={() => setIsMenuOpen(false)}
+                      className="inline-flex items-center gap-1.5 rounded-xl border border-line bg-surface px-3.5 py-2 text-xs font-semibold text-ink transition-all hover:border-emerald"
+                  >
+                    <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald" />
+                    <span>Contact</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+        )}
       </header>
   );
 }

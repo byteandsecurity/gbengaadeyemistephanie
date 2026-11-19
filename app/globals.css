@@ -101,3 +101,22 @@ main p a {
     scroll-behavior: auto !important;
   }
 }
+
+/* Add at the bottom of app/globals.css */
+.site-container {
+  width: 100%;
+  max-width: 72rem; /* 1152px (max-w-6xl) on standard screens */
+  margin-inline: auto;
+}
+
+@media (min-width: 1280px) {
+  .site-container {
+    max-width: 78rem; /* ~1248px gentle bump on wider desktop screens */
+  }
+}
+
+@media (display-mode: standalone) and (min-width: 1024px) {
+  .site-container {
+    max-width: 84rem; /* ~1344px comfortable width for installed desktop app */
+  }
+}
