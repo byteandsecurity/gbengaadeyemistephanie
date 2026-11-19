@@ -5,6 +5,7 @@ import Link from "next/link";
 import { NavLink } from "./NavLink";
 import { BrandIcon } from "./BrandIcon";
 import { useTheme } from "./ThemeProvider";
+import { OfflineBadge } from "./OfflineBadge";
 
 export function SiteHeader({ name }: { name: string }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -60,6 +61,8 @@ export function SiteHeader({ name }: { name: string }) {
                 About
               </Link>
             </div>
+
+            <OfflineBadge />
 
             {/* Theme Toggle Button */}
             <button
