@@ -28,6 +28,7 @@ async function main() {
       email: profile.email,
       linkedin: profile.linkedin,
       github: profile.github,
+      brandGithub: profile.brandGithub ?? "",
       focusAreas: profile.focusAreas,
       softwareTitle: profile.panels.software.title,
       softwareLead: profile.panels.software.lead,
