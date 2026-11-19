@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
   :root {
@@ -37,13 +38,13 @@
   --color-emerald-deep: #047857;
   --color-emerald-soft: rgba(16, 185, 129, 0.14);
 
-  /* Legacy Aliases */
-  --color-cobalt: #8b5cf6;
-  --color-cobalt-deep: #6d28d9;
-  --color-cobalt-soft: rgba(139, 92, 246, 0.14);
-  --color-amber: #10b981;
-  --color-amber-deep: #34d399;
-  --color-amber-soft: rgba(16, 185, 129, 0.14);
+  /* Legacy Aliases (Software = Emerald, Cybersecurity = Violet) */
+  --color-cobalt: #10b981;
+  --color-cobalt-deep: #047857;
+  --color-cobalt-soft: rgba(16, 185, 129, 0.14);
+  --color-amber: #8b5cf6;
+  --color-amber-deep: #6d28d9;
+  --color-amber-soft: rgba(139, 92, 246, 0.14);
 
   /* Admin Feedback */
   --color-danger: #f87171;

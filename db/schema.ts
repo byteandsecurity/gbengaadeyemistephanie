@@ -46,6 +46,7 @@ export const profile = pgTable("profile", {
   email: text("email").notNull(),
   linkedin: text("linkedin").notNull(),
   github: text("github").notNull(),
+  brandGithub:text("brand_github").notNull(),
   focusAreas: textArray("focus_areas"),
   softwareTitle: text("software_title").notNull(),
   softwareLead: text("software_lead").notNull(),

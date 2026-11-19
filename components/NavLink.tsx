@@ -22,20 +22,18 @@ export function NavLink({
             aria-current={active ? "page" : undefined}
             className={`group relative py-1 font-display text-sm font-medium transition-colors sm:text-[0.95rem] ${
                 active
-                    ? isScrolled
-                        ? "text-white font-semibold"
-                        : "text-slate-950 font-semibold"
+                    ? "font-semibold text-ink"
                     : isScrolled
-                        ? "text-slate-400 hover:text-slate-100"
-                        : "text-slate-600 hover:text-slate-950"
+                        ? "text-muted hover:text-ink"
+                        : "text-ink/75 hover:text-ink"
             }`}
         >
             <span>{children}</span>
             <span
                 className={`absolute -bottom-1 left-0 h-0.5 rounded-full transition-all duration-300 ${
                     active
-                        ? "w-full bg-gradient-to-r from-[#10B981] to-[#8B5CF6]"
-                        : "w-0 bg-slate-400 group-hover:w-full"
+                        ? "w-full bg-gradient-to-r from-emerald to-violet"
+                        : "w-0 bg-ink/60 group-hover:w-full"
                 }`}
             />
         </Link>

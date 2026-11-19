@@ -13,6 +13,7 @@ export interface Profile {
   email: string;
   linkedin: string;
   github: string;
+  brandGithub?: string
   focusAreas: string[];
   panels: {
     software: Panel;

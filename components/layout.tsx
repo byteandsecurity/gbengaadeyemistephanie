@@ -78,29 +78,36 @@ export function PageHero({
   lead,
   items,
   itemsLabel,
+    visual,
 }: {
   tone: "cobalt" | "amber";
   title: string;
   lead: string;
   items?: string[];
   itemsLabel?: string;
+  visual?: ReactNode;
 }) {
   const palette = tone === "cobalt" ? "bg-cobalt text-white on-cobalt" : "bg-amber text-ink";
   return (
     <section className={palette}>
       <Container className="py-16 sm:py-24">
-        <h1 className="max-w-4xl text-5xl font-bold sm:text-6xl lg:text-7xl">{title}</h1>
-        <p className="mt-6 max-w-2xl text-xl leading-relaxed">{lead}</p>
-        {items ? (
-          <div className="mt-10">
-            {itemsLabel ? <h2 className="text-lg font-bold">{itemsLabel}</h2> : null}
-            <ul className="mt-3 flex max-w-3xl flex-wrap gap-x-6 gap-y-1 font-display text-lg">
-              {items.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
+        <div className={visual ? "grid items-center gap-10 lg:grid-cols-[1.35fr_0.65fr]" : ""}>
+          <div>
+            <h1 className="max-w-4xl font-display text-5xl font-bold sm:text-6xl lg:text-7xl">{title}</h1>
+            <p className="mt-6 max-w-2xl text-xl leading-relaxed text-white/90">{lead}</p>
+            {items ? (
+                <div className="mt-10">
+                  {itemsLabel ? <h2 className="font-display text-lg font-bold">{itemsLabel}</h2> : null}
+                  <ul className="mt-3 flex max-w-3xl flex-wrap gap-x-6 gap-y-1 font-display text-lg">
+                    {items.map((item) => (
+                        <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+            ) : null}
           </div>
-        ) : null}
+          {visual ? <div className="flex justify-start lg:justify-end">{visual}</div> : null}
+        </div>
       </Container>
     </section>
   );

@@ -26,11 +26,11 @@ export function ContactComposer({ email, whatsappNumber = "" }: ContactComposerP
         : `https://wa.me/?text=${encodeURIComponent(formattedBody)}`;
 
     return (
-        <div className="rounded-2xl border border-[#1E2230] bg-[#11131A] p-5 sm:p-6">
+        <div className="rounded-2xl border border-line bg-paper p-5 transition-colors duration-300 sm:p-6">
             <div className="flex items-center justify-between gap-2">
-                <h3 className="font-display text-lg font-bold text-white">Send a quick note</h3>
-                <span className="inline-flex items-center gap-1.5 text-xs font-medium text-[#34D399]">
-          <span className="h-1.5 w-1.5 rounded-full bg-[#34D399] animate-pulse" />
+                <h3 className="font-display text-lg font-bold text-ink">Send a quick note</h3>
+                <span className="inline-flex items-center gap-1.5 text-xs font-medium text-emerald-deep dark:text-emerald-light">
+          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald" />
           Direct dispatch
         </span>
             </div>
@@ -47,7 +47,7 @@ export function ContactComposer({ email, whatsappNumber = "" }: ContactComposerP
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             placeholder="Your name"
-                            className="w-full rounded-xl border border-[#1E2230] bg-[#090A0F] px-3.5 py-2.5 text-sm text-white placeholder:text-slate-500 focus:border-[#A78BFA] focus:outline-none"
+                            className="w-full rounded-xl border border-line bg-surface px-3.5 py-2.5 text-sm text-ink placeholder:text-muted focus:border-violet focus:outline-none"
                         />
                     </div>
 
@@ -59,7 +59,7 @@ export function ContactComposer({ email, whatsappNumber = "" }: ContactComposerP
                             id="footer-topic"
                             value={topic}
                             onChange={(e) => setTopic(e.target.value)}
-                            className="w-full rounded-xl border border-[#1E2230] bg-[#090A0F] px-3.5 py-2.5 text-sm text-slate-200 focus:border-[#A78BFA] focus:outline-none"
+                            className="w-full rounded-xl border border-line bg-surface px-3.5 py-2.5 text-sm text-ink focus:border-violet focus:outline-none"
                         >
                             <option value="Software Engineering">Software Engineering</option>
                             <option value="Cybersecurity & GRC">Cybersecurity &amp; GRC</option>
@@ -79,14 +79,14 @@ export function ContactComposer({ email, whatsappNumber = "" }: ContactComposerP
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         placeholder="Write a brief message about a role, audit, or build..."
-                        className="w-full resize-none rounded-xl border border-[#1E2230] bg-[#090A0F] px-3.5 py-2.5 text-sm text-white placeholder:text-slate-500 focus:border-[#A78BFA] focus:outline-none"
+                        className="w-full resize-none rounded-xl border border-line bg-surface px-3.5 py-2.5 text-sm text-ink placeholder:text-muted focus:border-violet focus:outline-none"
                     />
                 </div>
 
                 <div className="grid grid-cols-1 gap-2.5 pt-1 sm:grid-cols-2">
                     <a
                         href={mailtoHref}
-                        className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#8B5CF6]/40 bg-[#8B5CF6]/15 px-4 py-2.5 font-display text-sm font-semibold text-[#A78BFA] transition-all hover:border-[#A78BFA] hover:bg-[#8B5CF6]/25 hover:text-white"
+                        className="inline-flex items-center justify-center gap-2 rounded-xl border border-violet/40 bg-violet-soft px-4 py-2.5 font-display text-sm font-semibold text-violet-deep transition-all hover:border-violet hover:bg-violet hover:text-white dark:text-violet-light"
                     >
                         <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                             <rect width="20" height="16" x="2" y="4" rx="2" />
@@ -99,7 +99,7 @@ export function ContactComposer({ email, whatsappNumber = "" }: ContactComposerP
                         href={whatsappHref}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#10B981]/40 bg-[#10B981]/15 px-4 py-2.5 font-display text-sm font-semibold text-[#34D399] transition-all hover:border-[#34D399] hover:bg-[#10B981]/25 hover:text-white"
+                        className="inline-flex items-center justify-center gap-2 rounded-xl border border-emerald/40 bg-emerald-soft px-4 py-2.5 font-display text-sm font-semibold text-emerald-deep transition-all hover:border-emerald hover:bg-emerald hover:text-white dark:text-emerald-light"
                     >
                         <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                             <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />

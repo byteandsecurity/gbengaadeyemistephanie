@@ -1,0 +1,1 @@
+ALTER TABLE "profile" ADD COLUMN "brand_github" text NOT NULL DEFAULT '';

@@ -39,6 +39,7 @@ export async function getProfile(): Promise<Profile> {
     email: row.email,
     linkedin: row.linkedin,
     github: row.github,
+    brandGithub: row.brandGithub,
     focusAreas: row.focusAreas,
     panels: {
       software: { title: row.softwareTitle, lead: row.softwareLead, proof: row.softwareProof, cta: row.softwareCta },
